@@ -16,12 +16,14 @@ import {Provider} from 'react-redux';
 
 import store from './store';
 import RepositoryList from './components/repository-list';
+import Game from './components/game';
 
 document.addEventListener('DOMContentLoaded', () =>
     ReactDOM.render(
-        <Provider store={store}>
-            <RepositoryList />
-        </Provider>,
+    <Game />
+//        <Provider store={store}>
+//            <RepositoryList />
+       // </Provider>,
         document.getElementById('app')
     )
 );
