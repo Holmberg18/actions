@@ -1,4 +1,4 @@
-import {guessGameReducer} from '../reducers/index';
+import {guessGameReducer(49)} as gameResult from '../reducers/index';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -9,8 +9,8 @@ export default class Game extends React.Component {
         super(props);   
     }
     
-    gameState(guessGameReducer) {
-        var state = String(guessGameReducer);
+    gameState(gameResult)) {
+        var state = String(gameResult);
     }
 
   

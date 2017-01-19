@@ -1,5 +1,6 @@
 
 
+import 'isomorphic-fetch';
 
 //Instantiate Actions
 export const GUESS_NUMBER = 'GUESS_NUMBER';//Create a function and a variable, function we use in the component. In the reducer, we use the constant, the variable. Instead of checking the type with a string, we check the type with a variable. 
@@ -17,6 +18,41 @@ export const newGame = {
 
 export const guessAction = guessNumber(guess);
 export const newGameAction = newGame();
+
+
+//export const FETCH_DESCRIPTION_SUCCESS = 'FETCH_DESCRIPTION_SUCCESS';
+//export const fetchDescriptionSuccess = (repository, description) => ({
+//    type: FETCH_DESCRIPTION_SUCCESS,
+//    repository,
+//    description
+//});
+//
+//export const FETCH_DESCRIPTION_ERROR= 'FETCH_DESCRIPTION_ERROR';
+//export const fetchDescriptionError = (repository, error) => ({
+//    type: FETCH_DESCRIPTION_ERROR,
+//    repository,
+//    error
+//});
+
+
+//export const fetchDescription = repository => dispatch => {
+//    const url = `https://api.github.com/repos/${repository}`;
+//    return fetch(url).then(response => {
+//        if (!response.ok) {
+//            const error = new Error(response.statusText)
+//            error.response = response
+//            throw error;
+//        }
+//        return response;
+//    })
+//    .then(response => response.json())
+//    .then(data =>
+//        dispatch(fetchDescriptionSuccess(repository, data.description))
+//    )
+//    .catch(error =>
+//        dispatch(fetchDescriptionError(repository, error))
+//    );
+//};
       
       
 //Actions required: 
