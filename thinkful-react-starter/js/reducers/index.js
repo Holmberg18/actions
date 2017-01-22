@@ -34,7 +34,7 @@ export const guessGameReducer = (state=initialGuessState, action) => {
              else {
                 feedback = "You are Cold!";
             }
-            
+//            console.log(feedback);
            return {...state, guesses: state.guesses.concat(action.number), feedback, win, lastGuess:action.number }; //same as shortcut feedback:feedback for last param
             
         //creates new object and copies everything from state into new object that was just created. 

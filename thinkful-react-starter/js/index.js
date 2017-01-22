@@ -15,15 +15,13 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
 import store from './store';
-import RepositoryList from './components/repository-list';
 import Game from './components/game';
 
 document.addEventListener('DOMContentLoaded', () =>
     ReactDOM.render(
-    <Game />
-//        <Provider store={store}>
-//            <RepositoryList />
-       // </Provider>,
+<Provider store={store}>
+          <Game />
+        </Provider>,
         document.getElementById('app')
     )
 );

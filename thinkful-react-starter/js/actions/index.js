@@ -5,10 +5,10 @@ import 'isomorphic-fetch';
 //Instantiate Actions
 export const GUESS_NUMBER = 'GUESS_NUMBER';//Create a function and a variable, function we use in the component. In the reducer, we use the constant, the variable. Instead of checking the type with a string, we check the type with a variable. 
 
-export const guessNumber(number) = {
+export const guessNumber = (number) => ({ //=>make it as a function
     type: GUESS_NUMBER,
     number: number
-};
+});
 
 
 export const NEW_GAME = 'NEW_GAME';
@@ -16,8 +16,7 @@ export const newGame = {
     type: NEW_GAME
 };
 
-export const guessAction = guessNumber(guess);
-export const newGameAction = newGame();
+
 
 
 //export const FETCH_DESCRIPTION_SUCCESS = 'FETCH_DESCRIPTION_SUCCESS';
