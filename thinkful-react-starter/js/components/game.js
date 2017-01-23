@@ -1,23 +1,24 @@
 import {guessNumber} from '../actions/index';
+import {newGame} from '../actions/index';
 
 import React from 'react';
 import {connect} from 'react-redux';
+import GuessForm from './guessForm';
+import GuessList from './guessList';
 
 
-export class Game extends React.Component {
+export class Game extends React.Component { 
     constructor(props) {
         super(props);   
         
-        this.makeGuess = this.makeGuess.bind(this);
+   
+        this.newGame = this.newGame.bind(this);
     }
     
-//    gameState(gameResult)) {
-//        var state = String(gameResult);
-//    }
 
-    makeGuess(event){
-       event.preventDefault();
-        this.props.dispatch(guessNumber(this.inputText.value));
+    newGame(event){
+        event.preventDefault();
+        this.props.dispatch(newGame());
     }
     
   
@@ -25,24 +26,28 @@ export class Game extends React.Component {
         console.log(this.props.feedback);
         let form;
         if (this.props.win == false){
-            form = ( <form class="number-guess" onSubmit={this.makeGuess}>
-                <input type="text" ref={(input) => this.inputText = input } name="number-input"/>
-                <button type='submit' id="guess-button">Guess</button>                
-                &nbsp;
-            </form>); //JSX syntax where you can use html markup as JS objects
-        }
+         
         return (
             <div className="game">
-            {form}
+             < GuessForm />
             <h2>{this.props.feedback}</h2>
+            <GuessList />
             </div>
         );
-    }
-}
-
+        }
+        else {
+            
+            return ( //bind new method to the class
+             <button type='submit' id="new-game-button" onClick={this.newGame}>New Game</button>
+            );
+                }
+            }
+        }
+        
 const mapStateToProps = (state, props) => ({
     feedback: state.feedback,
-    guesses: state.guesses
+    guesses: state.guesses,
+    win: state.win
 });
 
 export default connect(mapStateToProps)(Game);

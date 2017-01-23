@@ -12,10 +12,13 @@ export const guessNumber = (number) => ({ //=>make it as a function
 
 
 export const NEW_GAME = 'NEW_GAME';
-export const newGame = {
+export const newGame = () => ({ //define this as a function like guessNumber
     type: NEW_GAME
-};
+});
 
+//export const guessList = () => ({
+//   guesses:  
+//});
 
 
 

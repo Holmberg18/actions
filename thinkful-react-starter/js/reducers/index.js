@@ -15,6 +15,8 @@ const initialGuessState = {guesses: [],
 
 
 export const guessGameReducer = (state=initialGuessState, action) => {
+    console.log(state);
+    
     switch(action.type){
         case GUESS_NUMBER:
             var difference = Math.abs(action.number - state.randomNumber);
@@ -44,3 +46,4 @@ export const guessGameReducer = (state=initialGuessState, action) => {
             return state; //default is to keep same state that you had before.
     }
 };
+
