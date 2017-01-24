@@ -16,6 +16,41 @@ export const newGame = () => ({ //define this as a function like guessNumber
     type: NEW_GAME
 });
 
+export const FETCH_SUCCESS = 'FETCH_SUCESS';
+export const fetchSuccess = () => ({
+	type: FETCH_SUCCESS
+});
+
+export const SAVE_SUCCESS = 'SAVE_SUCESS';
+export const saveSuccess = () => ({
+	type: SAVE_SUCCESS
+});
+
+export const FETCH_FAILURE = 'FETCH_FAILURE';
+export const fetchFailure = () => ({
+	type: FETCH_FAILURE
+});
+
+
+export const SAVE_FAILURE = 'SAVE_FAILURE';
+export const saveFailure = () => ({
+	type: SAVE_FAILURE
+});
+
+
+export const fetchFewestGuesses = () => ({
+	
+
+});
+
+
+
+export const saveFewestGuesses = () => ({
+	
+
+});
+
+
 //export const guessList = () => ({
 //   guesses:  
 //});

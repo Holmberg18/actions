@@ -31,6 +31,7 @@ export class Game extends React.Component {
             <div className="game">
              < GuessForm />
             <h2>{this.props.feedback}</h2>
+			<div className="fewest-guesses">{this.props.fewestGuesses}</div>
             <GuessList />
             </div>
         );
