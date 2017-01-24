@@ -13,6 +13,7 @@ export class Game extends React.Component {
         
    
         this.newGame = this.newGame.bind(this);
+		this.fetchFewestGuesses = this.fetchFewestGuesses.bind(this);
     }
     
 
@@ -20,6 +21,14 @@ export class Game extends React.Component {
         event.preventDefault();
         this.props.dispatch(newGame());
     }
+	
+	fetchFewestGuesses(){
+	
+	}
+	
+	saveFewestGuesses(){
+	
+	}
     
   
     render() {
