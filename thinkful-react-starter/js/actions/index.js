@@ -39,15 +39,44 @@ export const saveFailure = () => ({
 
 
 export const fetchFewestGuesses = () => ({
-	
+    
+    let guesses = [];
+    
+           $.ajax({
+             url:'/fewestguesses',
+             type:"GET",
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+             console.log(data);
+    
+            for(var i = 0; i < data.guesses.length;i++){
+                    guesses.push(data.guesses[i]);
+            }
+                                         
+            return guesses;
+                                         
+             },error:function(err){
+                 console.log(err);
+             } //end success
+        });
+
+    });
+    
 
 });
 
 
 
-export const saveFewestGuesses = () => ({
-	
-
+export const saveFewestGuesses = (newGuesses, oldGuesses) => ({
+	   
+    if(newGuesses.length < oldGuesses){
+        return newGuesses;
+    }
+    else {
+     return oldGuesses;
+    }
+    
 });
 
 
