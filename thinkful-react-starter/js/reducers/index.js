@@ -1,5 +1,5 @@
 import {GUESS_NUMBER, NEW_GAME} from '../actions/index';
-import {FETCH_SUCCESS, FETCH_FAILURE, SAVE_SUCCESS, SAVE_FAILURE} from '../actions/index';
+import {GET_GUESSES_SUCCESS, GET_GUESSES_FAILURE, SAVE_GUESSES_SUCCESS, SAVE_GUESSES_FAILURE} from '../actions/index';
 
 
 
@@ -41,21 +41,21 @@ export const guessGameReducer = (state=initialGuessState, action) => {
            return {...state, guesses: state.guesses.concat(action.number), feedback, win, lastGuess:action.number }; //same as shortcut feedback:feedback for last param
 		   
 		   
-        case FETCH_SUCESS:
+        case GET_GUESSES_SUCCESS:
 		
-		return {};
+		return {...state, guesses: action.guesses};
 		
-		case FETCH_FAILURE:
+		case GET_GUESSES_FAILURE:
 		
-		return {};
+		return {...state, error:action.error};
 		
-		case SAVE_SUCCESS:
+		case  SAVE_GUESSES_SUCCESS:
 		
-		return {};
+		return {...state, saveGuess: action.saveGuesses};
 		
-		case SAVE_FAILURE:
+		case  SAVE_GUESSES_FAILURE:
 		
-		return {};
+		return {...state, error:action.error};
         //creates new object and copies everything from state into new object that was just created. 
         case NEW_GAME:
              return {...initialGuessState, randomNumber: randNum()}; //new game with empty guesses list.

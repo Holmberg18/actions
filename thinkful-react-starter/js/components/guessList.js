@@ -1,6 +1,7 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
+import {getFewestGuesses} from '../actions/index';
 
 
 export class GuessList extends React.Component { 

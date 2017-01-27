@@ -1,6 +1,6 @@
 import {guessNumber} from '../actions/index';
 import {newGame} from '../actions/index';
-
+import {getFewestGuesses} from '../actions/index';
 import React from 'react';
 import {connect} from 'react-redux';
 import GuessForm from './guessForm';
@@ -10,10 +10,9 @@ import GuessList from './guessList';
 export class Game extends React.Component { 
     constructor(props) {
         super(props);   
-        
-   
+        this.props.dispatch(getFewestGuesses());
         this.newGame = this.newGame.bind(this);
-		this.fetchFewestGuesses = this.fetchFewestGuesses.bind(this);
+		this.getFewestGuesses = this.getFewestGuesses.bind(this);
     }
     
 
@@ -22,8 +21,9 @@ export class Game extends React.Component {
         this.props.dispatch(newGame());
     }
 	
-	fetchFewestGuesses(){
-	
+	getFewestGuesses(){
+	 event.preventDefault();
+	 
 	}
 	
 	saveFewestGuesses(){
@@ -38,11 +38,15 @@ export class Game extends React.Component {
          
         return (
             <div className="game">
-             < GuessForm />
-            <h2>{this.props.feedback}</h2>
-			<div className="fewest-guesses">{this.props.fewestGuesses}</div>
-            <GuessList />
+					 < GuessForm />
+					<h2>{this.props.feedback}</h2>
+					<div className="fewest-guesses">{this.props.fewestGuesses}</div>
+					<GuessList />
+					<div className="fewest-guesses">
+						{this.props.getFewestGuesses}
+					</div>
             </div>
+			
         );
         }
         else {

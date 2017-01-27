@@ -16,68 +16,94 @@ export const newGame = () => ({ //define this as a function like guessNumber
     type: NEW_GAME
 });
 
-export const FETCH_SUCCESS = 'FETCH_SUCESS';
-export const fetchSuccess = () => ({
-	type: FETCH_SUCCESS
-});
+// export const FETCH_SUCCESS = 'FETCH_SUCESS';
+// export const fetchSuccess = () => ({
+	// type: FETCH_SUCCESS
+// });
 
-export const SAVE_SUCCESS = 'SAVE_SUCESS';
-export const saveSuccess = () => ({
-	type: SAVE_SUCCESS
-});
+// export const SAVE_SUCCESS = 'SAVE_SUCESS';
+// export const saveSuccess = () => ({
+	// type: SAVE_SUCCESS
+// });
 
-export const FETCH_FAILURE = 'FETCH_FAILURE';
-export const fetchFailure = () => ({
-	type: FETCH_FAILURE
-});
-
-
-export const SAVE_FAILURE = 'SAVE_FAILURE';
-export const saveFailure = () => ({
-	type: SAVE_FAILURE
-});
+// export const FETCH_FAILURE = 'FETCH_FAILURE';
+// export const fetchFailure = () => ({
+	// type: FETCH_FAILURE
+// });
 
 
-export const fetchFewestGuesses = () => ({
-    
-    let guesses = [];
-    
-           $.ajax({
-             url:'/fewestguesses',
-             type:"GET",
-             contentType:"application/json; charset=utf-8",
-             dataType:"json",
-             success: function(data){
-             console.log(data);
-    
-            for(var i = 0; i < data.guesses.length;i++){
-                    guesses.push(data.guesses[i]);
-            }
-                                         
-            return guesses;
-                                         
-             },error:function(err){
-                 console.log(err);
-             } //end success
-        });
+// export const SAVE_FAILURE = 'SAVE_FAILURE';
+// export const saveFailure = () => ({
+	// type: SAVE_FAILURE
+// });
 
-    });
-    
+export const GET_GUESSES_SUCCESS = 'GET_GUESSES_SUCCESS';
+export const getGuessesSuccess = (guesses) => ({
+    type: GET_GUESSES_SUCCESS,
+	guesses: guesses
 
 });
 
-
-
-export const saveFewestGuesses = (newGuesses, oldGuesses) => ({
-	   
-    if(newGuesses.length < oldGuesses){
-        return newGuesses;
-    }
-    else {
-     return oldGuesses;
-    }
-    
+export const GET_GUESSES_FAILURE= 'GET_GUESSES_FAILURE';
+export const getGuessesFailure = (guesses, error) => ({
+    type: GET_GUESSES_FAILURE,
+	error: error
 });
+
+
+export const SAVE_GUESSES_SUCCESS = 'SAVE_GUESSES_SUCCESS';
+export const saveGuessesSuccess = (saveGuesses) => ({
+    type: SAVE_GUESSES_SUCCESS,
+	guesses: guesses
+
+});
+
+export const SAVE_GUESSES_FAILURE= 'SAVE_GUESSES_FAILURE';
+export const saveGuessesFailure = (error) => ({
+    type: SAVE_GUESSES_FAILURE,
+	error: error
+});
+
+export const getFewestGuesses = () => dispatch => {
+    const url = '/fewest-guesses';
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            const error = new Error(response.statusText)
+            error.response = response
+            throw error;
+        }
+        return response;
+    })
+    .then(response => response.json())
+    .then(data =>
+        dispatch(getGuessesSuccess(guesses))
+    )
+    .catch(error =>
+        dispatch(getGuessesFailure(error))
+    );
+};
+
+
+export const saveFewestGuesses = () => dispatch => {
+    const request = {url:"/fewest-guesses", method:"POST"};
+    return fetch(request).then(response => {
+        if (!response.ok) {
+            const error = new Error(response.statusText)
+            error.response = response
+            throw error;
+        }
+        return response;
+    })
+    .then(response => response.json())
+    .then(data =>
+        dispatch(saveGuessesSuccess(data))
+    )
+    .catch(error =>
+        dispatch(saveGuessesFailure(error))
+    );
+};
+
+
 
 
 //export const guessList = () => ({
