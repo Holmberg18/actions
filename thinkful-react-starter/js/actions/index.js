@@ -76,7 +76,7 @@ export const getFewestGuesses = () => dispatch => {
     })
     .then(response => response.json())
     .then(data =>
-        dispatch(getGuessesSuccess(guesses))
+        dispatch(getGuessesSuccess(data.fewestGuesses))
     )
     .catch(error =>
         dispatch(getGuessesFailure(error))
@@ -84,8 +84,8 @@ export const getFewestGuesses = () => dispatch => {
 };
 
 
-export const saveFewestGuesses = () => dispatch => {
-    const request = {url:"/fewest-guesses", method:"POST"};
+export const saveFewestGuesses = (guesses) => dispatch => {
+    const request = {url:"/fewest-guesses", method:"POST" , body: {fewestGuesses: guesses}};
     return fetch(request).then(response => {
         if (!response.ok) {
             const error = new Error(response.statusText)

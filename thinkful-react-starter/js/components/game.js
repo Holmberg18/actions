@@ -12,7 +12,7 @@ export class Game extends React.Component {
         super(props);   
         this.props.dispatch(getFewestGuesses());
         this.newGame = this.newGame.bind(this);
-		this.getFewestGuesses = this.getFewestGuesses.bind(this);
+		
     }
     
 
@@ -27,7 +27,7 @@ export class Game extends React.Component {
 	}
 	
 	saveFewestGuesses(){
-	
+		this.props.dispatch();
 	}
     
   
@@ -38,7 +38,7 @@ export class Game extends React.Component {
          
         return (
             <div className="game">
-					 < GuessForm />
+					 < GuessForm win={this.props.win} guesses={this.props.guesses} />
 					<h2>{this.props.feedback}</h2>
 					<div className="fewest-guesses">{this.props.fewestGuesses}</div>
 					<GuessList />

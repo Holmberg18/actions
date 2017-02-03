@@ -22,7 +22,10 @@ export class GuessForm extends React.Component {
     makeGuess(event){
        event.preventDefault();
         this.props.dispatch(guessNumber(this.inputText.value));
-    }
+		if (this.props.win == true){
+		 this.props.dispatch(saveFewestGuesses(this.props.guesses));
+			}
+	}
     
 
 

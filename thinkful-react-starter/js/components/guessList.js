@@ -7,6 +7,7 @@ import {getFewestGuesses} from '../actions/index';
 export class GuessList extends React.Component { 
     constructor(props) {
         super(props);   
+		
     }
     
 
