@@ -85,8 +85,12 @@ export const getFewestGuesses = () => dispatch => {
 
 
 export const saveFewestGuesses = (guesses) => dispatch => {
-    const request = {url:"/fewest-guesses", method:"POST" , body: {fewestGuesses: guesses}};
-    return fetch(request).then(response => {
+	
+    const request = {url:"/fewest-guesses", method:"POST" , 
+	body: JSON.stringify({fewestGuesses: guesses}), 
+	headers: { 'Accept': 'application/json, text/plain, /', 'Content-Type': 'application/json' }};
+	
+    return fetch(request.url,request).then(response => {
         if (!response.ok) {
             const error = new Error(response.statusText)
             error.response = response

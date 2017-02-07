@@ -21,10 +21,10 @@ export class Game extends React.Component {
         this.props.dispatch(newGame());
     }
 	
-	getFewestGuesses(){
-	 event.preventDefault();
+	// getFewestGuesses(){
+	 // event.preventDefault();
 	 
-	}
+	// }
 	
 	saveFewestGuesses(){
 		this.props.dispatch();

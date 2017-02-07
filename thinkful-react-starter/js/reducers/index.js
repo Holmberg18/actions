@@ -43,7 +43,7 @@ export const guessGameReducer = (state=initialGuessState, action) => {
 		   
         case GET_GUESSES_SUCCESS:
 		
-		return {...state, guesses: action.guesses};
+		return {...state, fewestGuesses: action.guesses};
 		
 		case GET_GUESSES_FAILURE:
 		
